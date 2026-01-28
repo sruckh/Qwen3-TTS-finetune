@@ -127,7 +127,8 @@ pip install -q \
     safetensors \
     datasets \
     evaluate \
-    huggingface-hub
+    huggingface-hub \
+    hf_transfer
 
 echo -e "${GREEN}Core dependencies installed${NC}"
 echo ""

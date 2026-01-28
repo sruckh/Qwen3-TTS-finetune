@@ -148,6 +148,7 @@ class Qwen3TTSPipeline:
             ("accelerate", "accelerate"),
             ("safetensors", "safetensors"),
             ("huggingface_hub", "huggingface-hub"),
+            ("hf_transfer", "hf_transfer"),
         ]
 
         # Audio processing
