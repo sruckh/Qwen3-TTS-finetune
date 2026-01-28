@@ -187,6 +187,14 @@ class Qwen3TTSPipeline:
 
         Returns a list of dictionaries with audio path and transcription.
         """
+        # Fix for PyTorch 2.6+ compatibility with pyannote-audio
+        # These globals are needed for loading pyannote VAD models
+        try:
+            from omegaconf import ListConfig, DictConfig
+            torch.serialization.add_safe_globals([ListConfig, DictConfig])
+        except ImportError:
+            pass
+
         import whisperx
 
         print(f"\n{'='*60}")
