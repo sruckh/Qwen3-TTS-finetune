@@ -191,7 +191,7 @@ class Qwen3TTSPipeline:
         # pyannote models use omegaconf which requires weights_only=False
         _original_torch_load = torch.load
         def _patched_torch_load(*args, **kwargs):
-            kwargs.setdefault('weights_only', False)
+            kwargs['weights_only'] = False  # Force override
             return _original_torch_load(*args, **kwargs)
         torch.load = _patched_torch_load
 
