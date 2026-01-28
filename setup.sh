@@ -56,6 +56,20 @@ PYTHON_FULL_VERSION=$($PYTHON_VERSION --version)
 echo -e "${GREEN}Found: $PYTHON_FULL_VERSION${NC}"
 echo ""
 
+# Check for sox (required by qwen-tts)
+echo -e "${GREEN}Checking for SoX...${NC}"
+if ! command -v sox &> /dev/null; then
+    echo -e "${RED}Error: SoX not found${NC}"
+    echo -e "${YELLOW}SoX is required by qwen-tts for audio processing.${NC}"
+    echo -e "${YELLOW}Please install SoX:${NC}"
+    echo -e "  Ubuntu/Debian: sudo apt install sox libsox-fmt-all"
+    echo -e "  RHEL/CentOS:   sudo yum install sox"
+    echo -e "  macOS:         brew install sox"
+    exit 1
+fi
+echo -e "${GREEN}Found: $(sox --version | head -1)${NC}"
+echo ""
+
 # Detect CUDA
 if command -v nvidia-smi &> /dev/null; then
     CUDA_VERSION=$(nvidia-smi | grep "CUDA Version" | awk '{print $9}' | cut -d':' -f2 | tr -d ' ')

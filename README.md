@@ -46,7 +46,20 @@ The pipeline processes your audio through 6 steps:
 
 - Python 3.12
 - CUDA 12.x (for GPU support, ~16GB VRAM recommended)
+- SoX audio library (required by qwen-tts)
 - ~10GB disk space for models
+
+**Install SoX:**
+```bash
+# Ubuntu/Debian
+sudo apt install sox libsox-fmt-all
+
+# RHEL/CentOS
+sudo yum install sox
+
+# macOS
+brew install sox
+```
 
 ### Pinned Versions
 
